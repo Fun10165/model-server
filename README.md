@@ -22,7 +22,11 @@ cd model-server
 ```bash
 uv sync
 ```
-
+## 预加载
+- 运行 `preload_mcp_with_mirror.sh` 缓存MCP服务器，提高服务器启动速度。
+```bash
+./preload_mcp_with_mirror.sh
+```
 ## 配置文件
 1. 复制默认配置文件：
 ```bash
