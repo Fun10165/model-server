@@ -1,0 +1,6 @@
+include README.md
+include .env.example
+include run.sh
+include uv.lock
+recursive-include src/whl *.whl
+recursive-include docs/ *

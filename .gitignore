@@ -1,0 +1,27 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local Environment File
+.env
+
+# Server Log
+server.log
+
+# OLD
+old/
+
+# files in "files" folder
+files/*
+!files/.gitkeep
+# files in "temp" folder
+temp/*
+
+node_modules/

@@ -1,0 +1,28 @@
+[project]
+name = "model-server"
+version = "0.1.0"
+description = "挑战杯人工智能+挑战赛用服务器"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "fastapi>=0.116.1",
+    "fastmcp>=2.11.2",
+    "langchain>=0.3.27",
+    "langchain-ark>=0.2.0",
+    "langchain-core>=0.3.74",
+    "langchain-mcp-adapters>=0.1.9",
+    "langgraph>=0.6.4",
+    "openai>=1.99.1",
+    "openpyxl>=3.1.5",
+    "pillow>=11.3.0",
+    "pydantic-settings>=2.10.1",
+    "pymupdf>=1.26.3",
+    "python-docx>=1.2.0",
+    "python-pptx>=1.0.2",
+    "requests>=2.32.4",
+    "uvicorn>=0.35.0",
+]
+
+[tool.uv.sources]
+langchain-ark = { path = "./src/whl/langchain_ark-0.2.0-py3-none-any.whl" }
