@@ -42,6 +42,7 @@ cp .env.example .env
   - 无公网IP：
     1. 通过 CloudNS 等服务获取域名
     2. 使用 Cloudflare + Cloudflare Tunnel 实现 DNS 解析和隧道服务
+    3. 警告：该行为可能会被国内运营商拦截
 
 ## 启动服务
 ```bash
