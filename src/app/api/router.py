@@ -377,10 +377,24 @@ async def process_unified(
             audio_url, server_base_url
         )
         try:
-            # 假设 model_kwargs 可以直接传递给 volc_client
-            # 如果需要特定字段，可以在这里做转换
-            transcription_options = request.model_kwargs.get("options", {})
-            raw_result = volc_client.run_transcription(processed_url, transcription_options)
+            # VVVV 核心修改 VVVV
+            # 1. 首先，通过实例化 TranscriptionOptions 模型来获取所有默认值
+            default_options = task_schemas.TranscriptionOptions().model_dump()
+
+            # 2. 然后，获取用户可能在 model_kwargs 中提供的覆盖选项
+            user_overrides = request.model_kwargs.get("options", {})
+            if not isinstance(user_overrides, dict):
+                logging.warning(f"model_kwargs中的'options'不是一个有效的字典，将被忽略。收到的值: {user_overrides}")
+                user_overrides = {}
+
+            # 3. 合并字典。用户提供的选项将覆盖默认值。
+            final_transcription_options = {**default_options, **user_overrides}
+            
+            logging.debug(f"最终传递给火山引擎的转写选项: {final_transcription_options}")
+
+            # 4. 使用合并后的最终选项执行转写
+            raw_result = volc_client.run_transcription(processed_url, final_transcription_options)
+            # ^^^^ 核心修改 ^^^^
             return parse_transcription_output(raw_result)
         finally:
             audio_processor.cleanup_temp_files(converted_path, original_path)
