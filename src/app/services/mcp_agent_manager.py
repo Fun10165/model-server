@@ -57,7 +57,7 @@ async def initialize_mcp_and_agent():
         await mcp_client.__aenter__() 
         mcp_client_instance = mcp_client
         
-        color_print("--- [步骤 2] 正在加载 MCP 工具...", "blue")
+        color_print("--- [步骤 2] 正在加载 MCP 工具...（注意，下面还有步骤3，如果长时间没有看到步骤3，说明可能网络出现问题，请检查您的网络设置）", "blue")
         tools = await load_mcp_tools(mcp_client.session)
         
         color_print(f"--- [步骤 3] 工具加载成功 ({len(tools)}个)。正在创建 Agent...", "blue")
